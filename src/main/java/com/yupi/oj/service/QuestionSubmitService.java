@@ -2,6 +2,8 @@ package com.yupi.oj.service;
 
 import com.yupi.oj.model.entity.QuestionSubmit;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.yupi.oj.model.entity.User;
+import com.yupi.oj.model.questionsubmit.QuestionSubmitAddRequest;
 
 /**
 * @author 周宇涵
@@ -10,4 +12,21 @@ import com.baomidou.mybatisplus.extension.service.IService;
 */
 public interface QuestionSubmitService extends IService<QuestionSubmit> {
 
+    /**
+     * 题目提交
+     *
+     * @param questionId
+     * @param loginUser
+     * @return
+     */
+    long doQuestionSubmit(QuestionSubmitAddRequest questionSubmitAddRequest, User loginUser);
+
+    /**
+     * 帖子题目提交（内部服务）
+     *
+     * @param userId
+     * @param questionId
+     * @return
+     */
+    int doQuestionSubmitInner(long userId, long questionId);
 }
